@@ -1,0 +1,25 @@
+{
+  "projectName": "Perqsy",
+  "description": "Employee perks and recognition platform.",
+  "status": "In Progress",
+  "priority": "High",
+  "progress": 65,
+  "currentGoal": "Finalize Stripe integration for company billing",
+  "currentTask": "Implement webhook handlers for subscription.created",
+  "nextTask": "Write E2E tests for the checkout flow",
+  "estimatedHoursRemaining": 12,
+  "currentBranch": "feature/stripe-billing",
+  "lastUpdated": "2026-07-16T14:30:00Z",
+  "blockers": [
+    "Waiting on client to provide live Stripe API keys",
+    "Dependency issue with latest stripe-node version"
+  ],
+  "recentDecisions": [
+    "Opted for Stripe Checkout over custom elements to save time.",
+    "Using webhooks exclusively for state updates rather than synchronous API responses."
+  ],
+  "modifiedFiles": ["src/api/webhooks.ts", "src/services/billing.ts"],
+  "recentCommits": ["feat: add initial webhook scaffolding", "fix: signature verification"],
+  "tags": ["fintech", "stripe", "react"],
+  "nextSessionPrompt": "Start by debugging the signature verification failure in src/api/webhooks.ts on line 42."
+}
