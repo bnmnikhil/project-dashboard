@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import {
-  Activity,
   CircleDot,
   GitBranch,
   Home,
