@@ -1,25 +1,34 @@
 {
-  "projectName": "Perqsy",
-  "description": "Employee perks and recognition platform.",
+  "name": "Perqsy",
+  "description": "Employee perks & rewards marketplace. B2B SaaS letting HR teams curate benefit catalogs employees can redeem with points.",
   "status": "In Progress",
   "priority": "High",
-  "progress": 65,
-  "currentGoal": "Finalize Stripe integration for company billing",
-  "currentTask": "Implement webhook handlers for subscription.created",
-  "nextTask": "Write E2E tests for the checkout flow",
-  "estimatedHoursRemaining": 12,
-  "currentBranch": "feature/stripe-billing",
-  "lastUpdated": "2026-07-16T14:30:00Z",
+  "progress": 68,
+  "currentGoal": "Ship the points-redemption checkout flow end to end.",
+  "currentTask": "Wiring Stripe payment-intent confirmation into the redemption store.",
+  "nextTask": "Add idempotency keys + retry handling to the redemption service.",
+  "estimatedHoursRemaining": 22,
+  "currentBranch": "feat/redemption-checkout",
+  "lastUpdated": "2026-07-16T18:40:00Z",
   "blockers": [
-    "Waiting on client to provide live Stripe API keys",
-    "Dependency issue with latest stripe-node version"
+    "Awaiting finance sign-off on the point-to-USD conversion table before enabling live payouts."
   ],
   "recentDecisions": [
-    "Opted for Stripe Checkout over custom elements to save time.",
-    "Using webhooks exclusively for state updates rather than synchronous API responses."
+    "Adopted Stripe PaymentIntents over Charges API for SCA compliance.",
+    "Points ledger is append-only; balances are derived, never mutated in place.",
+    "Chose TanStack Query for server cache to kill duplicate catalog fetches."
   ],
-  "modifiedFiles": ["src/api/webhooks.ts", "src/services/billing.ts"],
-  "recentCommits": ["feat: add initial webhook scaffolding", "fix: signature verification"],
-  "tags": ["fintech", "stripe", "react"],
-  "nextSessionPrompt": "Start by debugging the signature verification failure in src/api/webhooks.ts on line 42."
+  "modifiedFiles": [
+    "src/store/redemption.ts",
+    "src/api/stripe.ts",
+    "src/pages/Checkout.tsx",
+    "src/hooks/usePoints.ts"
+  ],
+  "recentCommits": [
+    { "hash": "a3f9c1", "message": "feat: confirm payment intent on redeem" },
+    { "hash": "7b21e0", "message": "refactor: derive balance from ledger" },
+    { "hash": "c90d44", "message": "fix: catalog pagination cursor off-by-one" }
+  ],
+  "tags": ["saas", "stripe", "react", "b2b"],
+  "nextSessionPrompt": "Resume on feat/redemption-checkout. Finish PaymentIntent confirmation in redemption.ts, then add idempotency keys to the redeem endpoint. Do NOT enable live payouts until finance approves the conversion table."
 }

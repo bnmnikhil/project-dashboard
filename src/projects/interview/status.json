@@ -1,0 +1,31 @@
+{
+  "name": "Interview Preparation",
+  "description": "Personal spaced-repetition trainer for coding interviews. Tracks problems, schedules reviews, and logs patterns you keep missing.",
+  "status": "Completed",
+  "priority": "Low",
+  "progress": 100,
+  "currentGoal": "Ship v1 and start using it daily.",
+  "currentTask": "Done — v1 shipped and deployed to GitHub Pages.",
+  "nextTask": "Backlog: add a \"pattern heatmap\" once enough review data accrues.",
+  "estimatedHoursRemaining": 0,
+  "currentBranch": "main",
+  "lastUpdated": "2026-07-02T09:15:00Z",
+  "blockers": [],
+  "recentDecisions": [
+    "Used an SM-2 spaced-repetition schedule — simple and proven.",
+    "All state persists to localStorage; export/import as JSON for backup.",
+    "Tagged every problem by pattern (two-pointer, DP, graph) for later analytics."
+  ],
+  "modifiedFiles": [
+    "src/srs/sm2.ts",
+    "src/store/problems.ts",
+    "src/pages/Review.tsx"
+  ],
+  "recentCommits": [
+    { "hash": "9ade51", "message": "chore: deploy v1 to gh-pages" },
+    { "hash": "3f7b20", "message": "feat: JSON export/import" },
+    { "hash": "be0c9a", "message": "feat: SM-2 review scheduler" }
+  ],
+  "tags": ["study", "srs", "react", "localstorage"],
+  "nextSessionPrompt": "v1 is DONE and in daily use. No active work. If you return: implement the pattern heatmap in a new Analytics page once there are ~2 weeks of review logs in localStorage."
+}

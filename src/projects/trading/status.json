@@ -1,0 +1,35 @@
+{
+  "name": "Trading Platform",
+  "description": "Paper-trading platform for learning options strategies. Real-time quotes, a strategy builder, and P&L simulation — no real money.",
+  "status": "Blocked",
+  "priority": "High",
+  "progress": 55,
+  "currentGoal": "Stream live quotes into the strategy builder without rate-limit issues.",
+  "currentTask": "Blocked: market-data provider revoked the free WebSocket tier mid-integration.",
+  "nextTask": "Evaluate replacement data feeds (Polygon vs. Alpaca) and re-abstract the quote adapter.",
+  "estimatedHoursRemaining": 48,
+  "currentBranch": "feat/live-quotes",
+  "lastUpdated": "2026-07-10T16:20:00Z",
+  "blockers": [
+    "Market-data vendor sunset the free WebSocket plan — live quotes are dead until we migrate providers.",
+    "Options-chain endpoint requires a paid key; strategy builder greeks are stubbed in the meantime."
+  ],
+  "recentDecisions": [
+    "Abstracted all market data behind a QuoteAdapter interface — swapping providers is now localized.",
+    "P&L simulation runs fully client-side; no server round-trip per scenario.",
+    "Greeks computed with a Black-Scholes util rather than pulling from the vendor."
+  ],
+  "modifiedFiles": [
+    "src/data/QuoteAdapter.ts",
+    "src/strategy/Builder.tsx",
+    "src/utils/blackScholes.ts",
+    "src/sim/pnl.ts"
+  ],
+  "recentCommits": [
+    { "hash": "5cc812", "message": "refactor: extract QuoteAdapter interface" },
+    { "hash": "f0a934", "message": "feat: client-side P&L simulation" },
+    { "hash": "22de70", "message": "feat: black-scholes greeks util" }
+  ],
+  "tags": ["fintech", "websocket", "react", "simulation"],
+  "nextSessionPrompt": "BLOCKED on market data. First task: decide Polygon vs Alpaca for quotes + options chains, then implement a new QuoteAdapter behind the existing interface. Greeks are already stubbed via blackScholes.ts so the builder still renders."
+}

@@ -1,18 +1,20 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import ProjectDetails from './pages/ProjectDetails';
+import NotFound from './pages/NotFound';
 
-function App() {
+export default function App() {
   return (
-    <HashRouter>
-      <div className="min-h-screen bg-background">
+    <div className="flex min-h-screen w-full bg-ink-950">
+      <Sidebar />
+      <main className="h-screen min-w-0 flex-1 overflow-y-auto">
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/project/:id" element={<ProjectDetails />} />
+          <Route path="/project/:slug" element={<ProjectDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
-    </HashRouter>
+      </main>
+    </div>
   );
 }
-
-export default App;

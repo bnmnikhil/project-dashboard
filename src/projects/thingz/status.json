@@ -1,0 +1,30 @@
+{
+  "name": "Thingz",
+  "description": "IoT inventory tracker for makerspaces. Tag physical tools with BLE beacons and see live location + checkout status on a floor map.",
+  "status": "Waiting",
+  "priority": "Medium",
+  "progress": 41,
+  "currentGoal": "Get reliable BLE presence detection working across the shop floor.",
+  "currentTask": "Blocked on hardware — waiting for the second batch of BLE gateways to arrive.",
+  "nextTask": "Calibrate RSSI-to-zone mapping once gateways are mounted.",
+  "estimatedHoursRemaining": 34,
+  "currentBranch": "feat/ble-presence",
+  "lastUpdated": "2026-07-14T11:05:00Z",
+  "blockers": [],
+  "recentDecisions": [
+    "Went with fixed BLE gateways over phone-based scanning for reliability.",
+    "Store raw RSSI samples; compute zone server-side so we can re-tune later.",
+    "Floor map is an SVG with data-zone regions rather than a canvas."
+  ],
+  "modifiedFiles": [
+    "src/ble/scanner.ts",
+    "src/map/FloorMap.tsx",
+    "src/utils/rssi.ts"
+  ],
+  "recentCommits": [
+    { "hash": "de44a2", "message": "feat: SVG floor map with zone regions" },
+    { "hash": "11b7cd", "message": "chore: buffer raw RSSI samples" }
+  ],
+  "tags": ["iot", "ble", "react", "hardware"],
+  "nextSessionPrompt": "Currently WAITING on hardware (2nd gateway batch, ETA ~5 days). Nothing to unblock in code. When gateways arrive: mount them, then work RSSI-to-zone calibration in utils/rssi.ts using the buffered sample set."
+}

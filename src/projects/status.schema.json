@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project Status",
+  "description": "Contract for every src/projects/<slug>/status.json. AI agents write this file; the dashboard reads it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "description",
+    "status",
+    "priority",
+    "progress",
+    "currentGoal",
+    "currentTask",
+    "nextTask",
+    "estimatedHoursRemaining",
+    "currentBranch",
+    "lastUpdated",
+    "blockers",
+    "recentDecisions",
+    "modifiedFiles",
+    "recentCommits",
+    "tags",
+    "nextSessionPrompt"
+  ],
+  "properties": {
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "status": { "enum": ["In Progress", "Waiting", "Blocked", "Completed"] },
+    "priority": { "enum": ["High", "Medium", "Low"] },
+    "progress": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "currentGoal": { "type": "string" },
+    "currentTask": { "type": "string" },
+    "nextTask": { "type": "string" },
+    "estimatedHoursRemaining": { "type": "number", "minimum": 0 },
+    "currentBranch": { "type": "string" },
+    "lastUpdated": { "type": "string", "format": "date-time" },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "recentDecisions": { "type": "array", "items": { "type": "string" } },
+    "modifiedFiles": { "type": "array", "items": { "type": "string" } },
+    "recentCommits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["hash", "message"],
+        "properties": {
+          "hash": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      }
+    },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "nextSessionPrompt": { "type": "string" }
+  }
+}
